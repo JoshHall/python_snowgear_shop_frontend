@@ -1,0 +1,12 @@
+table {
+  margin-top: 100px;
+
+}
+
+table > thead th {
+  min-width: 20%;
+}
+
+.notes {
+  max-width: 20%;
+}

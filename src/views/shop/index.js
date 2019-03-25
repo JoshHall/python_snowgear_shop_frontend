@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import Header from './components/header';
-import { Switch, Route } from 'react-router-dom';
-import Home from './views/home';
+import './index.css';
 
-class App extends Component {
+class Shop extends Component {
   constructor() {
     super();
     this.state = {
-      products: [
+      products = {
             1001: {
                 'title': 'Soap',
                 'price': 3.98,
@@ -109,26 +106,114 @@ class App extends Component {
                 'price': 20.00,
                 'desc': 'A pickle a day keeps the goblins away'
             }
-        ]
+        }
     }
+  }
+
+  getEvents = async(e) => {
+    e.preventDefault();
+
+    let day = e.target.elements.day.value;
+    let month = e.target.elements.month.value;
+    let year = e.target.elements.year.value;
+
+    // console.log(month, day, year);
+    let url = 'https://event-sched-backend711.herokuapp.com/api/retrieve';
+
+    let response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'day': day,
+        'month': month,
+        'year': year
+      }
+    });
+
+    let events = await response.json();
+
+    // sort by month then by Day
+    events.sort(function(a,b) {
+      return a.month - b.month;
+    });
+
+    events.sort(function(a,b) {
+      if (a.month === b.month) {
+        return a.day - b.day;
+      }
+    });
+
+    // console.log(data);
+    // if the variable you are saving into the state is the same, yu cane just use the code below instead of events: events
+    this.setState({ events });
+  }
+
+  removeEvent = async(id) => {
+    if (!window.confirm('Would you really like to delete this event?')) {
+      return;
+    }
+
+    // id.preventDefault();
+    let url = 'https://event-sched-backend711.herokuapp.com/api/delete';
+
+    let response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'event_id': id
+      }
+    });
+
+    let message = await response.json();
+    console.log(message);
+    if(message.success) {
+      let events = this.state.events;
+
+      for (let i in events)  {
+        if (events[i].event_id === id) {
+          events.splice(i, 1);
+          break;
+        }
+      }
+      this.setState({ events });
+      alert('Event successfully deleted.');
+
+    } else {
+      alert('Sorry, but we could not delete the event. Please try again later.');
+    }
+
   }
 
   render() {
     return (
-      <div className="App">
-        <Header />
-
-         <Switch>
-          <Route exact path='/' render={() => <Home />} />
-        </Switch>
-      </div>
+      <div class="container shop-container">
+        <div class="row">
+          <h3 class="shop-text">Shop Products</h3>
+        </div> {/* end row */}
+        {/* begin products being shown */}
+        {% for k,v in products.items() %}
+          {% if loop.index == 1 or loop.index % 3 == 1 %}
+          <div class="row top-margin-lg">
+          {% endif %}
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-img-top">
+                  <img src="http://placehold.it/250x250" alt="Placeholder Image" class="product-img">
+                </div>
+                <div class="card-title">{{ v.title }}</div>
+                <div class="card-subtitle">${{ v.price }}</div>
+                <div class="card-text">
+                  <p>{{ v.desc }}</p>
+                </div>
+                <button class="btn btn-primary" onclick="console.log({{ k }})">Add to Cart</button>
+              </div>{/* end card */}
+            </div>{/* end col 12 for card */}
+          {% if loop.index % 3 == 0 or loop.length == loop.index %}
+          </div>{/* end row for card */}
+          {% endif %}
+        {% endfor %}
+        {/* end products being shown */}
+      </div> {/* end end shop container */}
     );
   }
 }
 
-export default App;
-
-// <Switch>
-//   <Route exact path='/' render={() => <Schedule />} />
-//   <Route exact path='/events' render={() => <Events />} />
-// </Switch>
+export default Shop;

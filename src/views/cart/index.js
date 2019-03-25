@@ -3,7 +3,7 @@ import './index.css';
 import DateForm from '../../components/dateForm';
 import EventTable from '../../components/eventTable';
 
-class Events extends Component {
+class Cart extends Component {
   constructor() {
     super();
     this.state = {
@@ -102,4 +102,4 @@ class Events extends Component {
   }
 }
 
-export default Events;
+export default Cart;

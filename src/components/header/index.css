@@ -2,16 +2,16 @@ body {
   overflow-x: hidden;
 }
 
-nav {
+.nav {
   background-color: #21283C;
   }
 
-NavLink{
+.navbar-brand{
   color: white;
   text-decoration: none;
 }
 
-NavLink:hover{
+.navbar-brand:hover{
   color: rgba(38,50,56,.7);
   text-decoration: none;
 }
@@ -21,27 +21,27 @@ NavLink:hover{
 }
 
 /* Hamburger Menu changes start */
-ul.navbar-nav.mr-auto {
+Nav.mr-auto {
     padding-left: 2.8vw;
     width: 10vw;
     background-color: #21283C;
 }
 
-.collapse.show {
+/* .collapse.show {
   margin-left:72%;
-}
+} */
 
 .fixed-top {
   height: 10vh;
 }
 
-.custom-toggler.navbar-toggler {
+/* .custom-toggler.navbar-toggler {
     border-color: rgb(230,240,239);
     margin-left: 90%;
 }
 .custom-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(230,240,239, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
+} */
 /* Hamburger changes end */
 
 .footer-text {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
+import Carousel from 'react-bootstrap/Carousel';
+import banner from '../../media/images/Snow-covered-mountain-banner.jpg'
 
 class Home extends Component {
   constructor() {
@@ -88,82 +90,48 @@ class Home extends Component {
     return (
       <div className='container'>
         <div className="banner-img-container">
-            <img src="../static/images/Snow-covered-mountain-banner.jpg" alt="snow covered mountain"/>
+            <img src={banner} alt="snow covered mountain"/>
         </div> {/* end banner image container */}
         <div className="sponsers-container row w-100">
           <img src="https://via.placeholder.com/2000x100/FFFFFF/000000/?text=Sponser Logos across" alt="Sponsers" className="sponser-banner"/>
         </div> {/* end sponser container */}
-        <div className="image-carousel-container">
-          <div id="dealImagesIndicators" className="carousel slide" data-ride="carousel" >
-            <ol className="carousel-indicators">
-              <li data-target="#dealImagesIndicators" data-slide-to="0" className="active"></li>
-              <li data-target="#dealImagesIndicators" data-slide-to="1"></li>
-              <li data-target="#dealImagesIndicators" data-slide-to="2"></li>
-            </ol> {/* end indicators list */}
-            <div className="carousel-inner"> {/* start carousel images  */}
-              <div className="carousel-item active">
-                <img className="d-block w-100" src="https://via.placeholder.com/800x200.png?text=First Slide" alt="First slide"/>
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="https://via.placeholder.com/800x200.png?text=Second Slide" alt="Second slide"/>
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="https://via.placeholder.com/800x200.png?text=Third Slide" alt="Third slide"/>
-            </div> {/* end carousel images  */}
-            <a className="carousel-control-prev" href="#dealImagesIndicators" role="button" data-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="sr-only">Previous</span>
-            </a> {/* end previous control */}
-            <a className="carousel-control-next" href="#dealImagesIndicators" role="button" data-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="sr-only">Next</span>
-            </a> {/* end next control */}
-          </div> {/* end image carousel */}
-        </div> {/* end image carousel container */}
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://via.placeholder.com/800x200.png?text=First Slide"
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://via.placeholder.com/800x200.png?text=Second Slide"
+              alt="Third slide"
+            />
 
-        <div className="featured-products-container">
-          <div className="row featured-products-row">
-            <h3 className="featured-text">Featured Products</h3>
-            <h6 className="featured-shop-all">SHOP ALL</h6>
-          </div> {/* end row */}
-          <div id="featuredProductsControls" className="carousel slide" data-ride="carousel" >
-            <div className="carousel-inner row w-100 mx-auto">
-              {/* begin products being shown */}
-              
-              {/* end products being shown */}
-            </div> {/* end featured products item carousel */}
-            <a className="carousel-control-prev featured-control-prev" href="#featuredProductsControls" role="button" data-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="sr-only">Previous</span>
-            </a> {/* end featured products prev button */}
-            <a className="carousel-control-next featured-control-next" href="#featuredProductsControls" role="button" data-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="sr-only">Next</span>
-            </a> {/* end featured products next button */}
-          </div> {/* end featured products carousel */}
-        </div> {/* end featured products container */}
+            <Carousel.Caption>
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://via.placeholder.com/800x200.png?text=Third Slide"
+              alt="Third slide"
+            />
 
-
-        <div className="contact-carousel-container">
-          <div id="carouselContactControls" className="carousel slide" data-ride="carousel" >
-            <ol className="carousel-indicators">
-              <li data-target="#carouselContactControls" data-slide-to="0" className="active"></li>
-              <li data-target="#carouselContactControls" data-slide-to="1"></li>
-              <li data-target="#carouselContactControls" data-slide-to="2"></li>
-            </ol> {/* end indicators list */}
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img className="d-block w-100" src="https://via.placeholder.com/800x200?text=First Slide" alt="First slide"/>
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="https://via.placeholder.com/800x200.png?text=Second Slide" alt="Second slide"/>
-              </div>
-              <div className="carousel-item">
-                <img className="d-block w-100" src="https://via.placeholder.com/800x200.png?text=Third Slide" alt="Third slide"/>
-              </div>
-            </div> {/* end carousel images  */}
-          </div> {/* end image carousel */}
-        </div> {/* end image carousel container */}
+            <Carousel.Caption>
+              <h3>Third slide label</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
       </div>
     );
   }

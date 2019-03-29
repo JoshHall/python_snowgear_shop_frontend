@@ -3,123 +3,159 @@ import './App.css';
 import Header from './components/header';
 import { Switch, Route } from 'react-router-dom';
 import Home from './views/home';
+import Shop from './views/shop';
+// import products from './products.js';
+import Cart from './views/cart';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      products: [
-            1001: {
-                'title': 'Soap',
-                'price': 3.98,
-                'desc': 'Very clean soapy soap, descriptive text'
-            },
-            1002: {
-                'title': 'Grapes',
-                'price': 4.56,
-                'desc': 'Bundle of grapey grapes, yummy'
-            },
-            1003: {
-                'title': 'Pickles',
-                'price': 5.67,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1004: {
-                'title': 'Juice',
-                'price': 2.68,
-                'desc': 'Yummy Yumy OJ Babyyyyy'
-            },
-            1005: {
-                'title': 'Title 5',
-                'price': 5.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1006: {
-                'title': 'Title 6',
-                'price': 6.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1007: {
-                'title': 'Title 7',
-                'price': 7.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1008: {
-                'title': 'Title 8',
-                'price': 8.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1009: {
-                'title': 'Title 9',
-                'price': 9.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1010: {
-                'title': 'Title 10',
-                'price': 10.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1011: {
-                'title': 'Title 11',
-                'price': 11.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1012: {
-                'title': 'Title 12',
-                'price': 12.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1013: {
-                'title': 'Title 13',
-                'price': 13.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1014: {
-                'title': 'Title 14',
-                'price': 14.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1015: {
-                'title': 'Title 15',
-                'price': 15.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1016: {
-                'title': 'Title 16',
-                'price': 16.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1017: {
-                'title': 'Title 17',
-                'price': 17.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1018: {
-                'title': 'Title 18',
-                'price': 18.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1019: {
-                'title': 'Title 19',
-                'price': 19.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            },
-            1020: {
-                'title': 'Title 20',
-                'price': 20.00,
-                'desc': 'A pickle a day keeps the goblins away'
-            }
-        ]
+    this.state= {
+      'products': [],
+      'cart': [],
+      'total': 0
     }
+
+    this.calcTotal = this.calcTotal.bind(this);
   }
+
+  componentWillMount() {
+    this.getProducts();
+    this.setState({ 'cart': JSON.parse(sessionStorage.getItem('cart')) });
+    this.calcTotal();
+  }
+
+  countDuplicates = (id, size) => {
+    let cart = JSON.parse(sessionStorage.getItem('cart'));
+
+    let count = 0;
+    for (let i in cart) {
+      if (cart[i].product.product_id === id && cart[i].size === size) {
+        count += 1;
+      }
+    }
+    return count
+  }
+
+  addItem = id => {
+    var cart = JSON.parse(sessionStorage.getItem('cart'));
+
+    for (let i in this.state.products) {
+      if(this.state.products[i].product_id === id) {
+
+        let sizes = document.getElementById("sizes" + this.state.products[i].product_id);
+        let size = sizes.selectedOptions[0].label;
+
+        let count = this.countDuplicates(id,size);
+
+        if (count <= 0) {
+          cart.push({
+            'product': this.state.products[i],
+            'size': size,
+            'quantity': 1
+          });
+        } else {
+          for (let j in cart) {
+            if (cart[j].size === size && cart[j].product.product_id === id && count >= 1) {
+              cart[j].quantity += 1;
+              break;
+            }
+          }
+        }
+
+        break;
+      }
+    }
+
+    console.log(cart)
+
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+
+    this.calcTotal();
+    this.setState({'cart': cart});
+  }
+
+  removeItem = (id,size) => {
+    // get cart key from sessionStorage and parse it into object
+    let cart = JSON.parse(sessionStorage.getItem('cart'));
+
+    for (let i in cart) {
+      if(cart[i].product.product_id === id && cart[i].size === size) {
+        if (cart[i].quantity > 1) {
+          cart[i].quantity -= 1;
+          break;
+        } else {
+          cart.splice(i, 1);
+          break;
+        }
+      }
+    }
+
+    sessionStorage.setItem('cart',JSON.stringify(cart));
+
+    this.calcTotal();
+    this.setState({'cart': cart});
+
+  }
+
+  // calculating and returning the Total
+  calcTotal() {
+    // get value and parse sessionStorage
+    let cart = JSON.parse(sessionStorage.getItem('cart'));
+
+    // use state before changing to session storage
+    // let cart = this.state.cart;
+    let total = 0;
+
+    for (let product in cart) {
+      total += (cart[product].product.price * cart[product].quantity);
+    }
+
+    total = total.toFixed(2);
+
+    this.setState({'total': total});
+  }
+
+  getFiltered = async() => {
+    let url = 'https://snow-gear-shop-backend.herokuapp.com/api/filter';
+
+    let response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    let products = await response.json();
+
+    // if the variable you are saving into the state is the same, yu cane just use the code below instead of events: events
+    this.setState({ products });
+  }
+
+  getProducts = async() => {
+    let url = 'https://snow-gear-shop-backend.herokuapp.com/api/retrieve';
+
+    let response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    let products = await response.json();
+
+    // if the variable you are saving into the state is the same, yu cane just use the code below instead of events: events
+    this.setState({ products });
+  }
+
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header total={this.state.total}/>
 
          <Switch>
-          <Route exact path='/' render={() => <Home />} />
+          <Route exact path='/' render={() => <Home products={this.state.products}/>} />
+          <Route exact path='/shop' render={() => <Shop products={this.state.products} addItem={this.addItem}/>} />
+          <Route exact path='/cart' render={() => <Cart cart={this.state.cart} total={this.state.total} removeItem={this.removeItem}/>} />
         </Switch>
       </div>
     );
@@ -127,8 +163,3 @@ class App extends Component {
 }
 
 export default App;
-
-// <Switch>
-//   <Route exact path='/' render={() => <Schedule />} />
-//   <Route exact path='/events' render={() => <Events />} />
-// </Switch>

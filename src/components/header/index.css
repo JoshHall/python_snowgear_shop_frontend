@@ -3,16 +3,20 @@ body {
 }
 
 .nav {
-  background-color: #21283C;
+  background-color: #21283B;
   }
 
-.navbar-brand{
+#basic-navbar-nav div a.navbar-brand.nav-link {
   color: white;
   text-decoration: none;
 }
 
-.navbar-brand:hover{
-  color: rgba(38,50,56,.7);
+#basic-navbar-nav div a.nav-link.disabled {
+  color: rgba(200,200,200,1);
+}
+
+#basic-navbar-nav div a.navbar-brand.nav-link:hover {
+  color: rgba(220,220,220,1);
   text-decoration: none;
 }
 
@@ -24,7 +28,7 @@ body {
 Nav.mr-auto {
     padding-left: 2.8vw;
     width: 10vw;
-    background-color: #21283C;
+    background-color: #21283B;
 }
 
 /* .collapse.show {
@@ -65,102 +69,4 @@ Nav.mr-auto {
 }
 .collapse {
   padding-left: 9vw;
-}
-.banner-img-container {
-  margin-top: 8vh;
-  position: relative;
-  overflow: hidden;
-}
-
-.top-margin-lg {
-  margin-top: 100px;
-}
-
-.top-margin-sm {
-  margin-top: 25px;
-  visibility: visible;
-}
-
-.featured-products-row {
-  text-align: center;
-  padding: 1vh 0 1vh 40vw;
-}
-
-.featured-text, .featured-shop-all {
-  text-align: center;
-  display: inline-block;
-  color: #4e6471;
-}
-
-.featured-shop-all {
-  font-size: small;
-  margin-top: 3vh;
-  margin-left: 26vw;
-  text-decoration: underline;
-}
-
-.carousel-control-prev-icon {
-
-}
-
-.featured-control-prev {
-  width: 7vw;
-}
-
-
-.carousel-control-next-icon {
-
-}
-.featured-control-next {
-  width: 7vw;
-}
-.card-container {
-  width: 14.5vw;
-}
-
-.card {
-  padding: 0 2vw 1vh 2vw;
-  border: none;
-}
-
-.product-img {
-  display: block;
-  margin: 25px auto;
-  width: 100%;
-}
-
-.card-title {
-  margin-top: 16vh;
-  font-size: 80%;
-  color: #4e6471;
-}
-
-.card-img-container {
-  width: 10vw;
-  height: 20vh;
-}
-
-.card-subtitle {
-  font-size: 70%;
-  color: #4e6471;
-}
-
-.card > button {
-  display: block;
-  margin: 25px auto;
-  width: 80%;
-}
-
-.contact-carousel-container {
-  margin-top: 3vh;
-}
-
-/* farthest right hidden item must be abso position for animations */
-.carousel-inner .carousel-item-prev.carousel-item-right {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    display: block;
-    visibility: visible;
 }

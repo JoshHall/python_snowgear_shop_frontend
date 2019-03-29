@@ -16,7 +16,7 @@ class Header extends Component {
             <Nav.Link className="navbar-brand" href="/shop">Shop</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Nav.Link className="navbar-brand" href="/cart"><i class="fa fa-shopping-cart"></i></Nav.Link>
+            <Nav.Link className="navbar-brand" href="/cart"><i className="fa fa-shopping-cart"></i></Nav.Link>
             <Nav.Link className="nav-link disabled" href="#">Total: <span className="total">${this.props.total}</span></Nav.Link>
           </Nav>
         </Navbar.Collapse>

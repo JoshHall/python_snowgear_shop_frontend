@@ -1,4 +1,7 @@
 table {
   margin-top: 100px;
-  background-color: #343a40 !important;
+  background-color: #c3ced4 !important;
+}
+table thead tr th, table tfoot tr th, table tbody tr td {
+  color: black;
 }

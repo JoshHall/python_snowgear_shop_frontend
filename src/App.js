@@ -38,14 +38,22 @@ class App extends Component {
   }
 
   addItem = id => {
-    var cart = JSON.parse(sessionStorage.getItem('cart'));
+    if (sessionStorage.getItem('cart')) {
+      var cart = JSON.parse(sessionStorage.getItem('cart'));
+    }
+    else {
+      var cart = [];
+    }
 
     for (let i in this.state.products) {
       if(this.state.products[i].product_id === id) {
 
+        // Get the selected size option
         let sizes = document.getElementById("sizes" + this.state.products[i].product_id);
         let size = sizes.selectedOptions[0].label;
+        // console.log(size)
 
+        // Update quantity
         let count = this.countDuplicates(id,size);
 
         if (count <= 0) {
@@ -130,6 +138,7 @@ class App extends Component {
     // if the variable you are saving into the state is the same, yu cane just use the code below instead of events: events
     this.setState({ products });
   }
+
 
   getProducts = async() => {
     let url = 'https://snow-gear-shop-backend.herokuapp.com/api/retrieve';

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './index.css';
 import Carousel from 'react-bootstrap/Carousel';
-import banner from '../../media/images/Snow-covered-mountain-banner.jpg'
+import banner from '../../media/images/Snow-covered-mountain-banner.jpg';
+import logosBanner from '../../media/images/logos-banner.png';
+import carousel1 from '../../media/images/carousel1.png';
+import carousel2 from '../../media/images/carousel2.jpg';
+import carousel3 from '../../media/images/carousel3.jpg';
 
 class Home extends Component {
 
@@ -12,24 +16,26 @@ class Home extends Component {
             <img src={banner} alt="snow covered mountain"/>
         </div> {/* end banner image container */}
         <div className="sponsers-container w-100">
-          <img src="https://via.placeholder.com/2000x100/FFFFFF/000000/?text=Sponser Logos across" alt="Sponsers" className="sponser-banner"/>
+          <img src={logosBanner} alt="Sponsers" className="sponser-banner"/>
         </div> {/* end sponser container */}
         <Carousel>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://via.placeholder.com/800x200.png"
+              src={carousel1}
               alt="First slide"
             />
+            {/*
             <Carousel.Caption>
               <h3>First slide label</h3>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
+            */}
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-block w-100"
-              src="https://via.placeholder.com/800x200.png"
+              className="carousel-item-2 d-block w-100"
+              src={carousel2}
               alt="Third slide"
             />
 
@@ -41,7 +47,7 @@ class Home extends Component {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://via.placeholder.com/800x200.png"
+              src={carousel3}
               alt="Third slide"
             />
 

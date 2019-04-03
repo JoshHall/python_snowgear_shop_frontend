@@ -21,6 +21,15 @@
   overflow: hidden;
 }
 
+.sponsers-container {
+  height: 15vh;
+}
+
+.sponsers-container img {
+  height: 100%;
+  width: 100%;
+}
+
 .top-margin-lg {
   margin-top: 100px;
 }
@@ -77,4 +86,12 @@
     z-index: -1;
     display: block;
     visibility: visible;
+}
+
+.carousel-item {
+  max-height: 552px !important;
+}
+
+.carousel-item-2 {
+  margin-top: -6% !important;
 }

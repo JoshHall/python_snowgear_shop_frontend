@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import './index.css';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import boot from '../../media/images/snowboard_boots.jpg';
+import glove from '../../media/images/snowboard_gloves.jpg';
+import mitten from '../../media/images/snowboard_mittens.jpg';
+import pants from '../../media/images/snowboard_pants.jpg';
+import jacket from '../../media/images/snowboard-jacket1.jpg';
+import snowboard from '../../media/images/snowboard-snowboard1.jpg';
 
 class ProductItem extends Component {
 
@@ -14,7 +20,24 @@ class ProductItem extends Component {
             this.props.products.map( product =>
               <Card className="col-md-4 inLine" id={product.product_id} >
                 <Card.Body>
-                  <Card.Img variant="top" src="https://via.placeholder.com/100x60.png" />
+                  {product.genre == 'boots' &&
+                    <Card.Img variant="top" src={boot} />
+                  }
+                  {product.genre == 'snowboard' &&
+                    <Card.Img variant="top" src={snowboard} />
+                  }
+                  {product.genre == 'jacket' &&
+                    <Card.Img variant="top" src={jacket} />
+                  }
+                  {product.genre == 'pants' &&
+                    <Card.Img variant="top" src={pants} />
+                  }
+                  {product.genre == 'gloves' &&
+                    <Card.Img variant="top" src={glove} />
+                  }
+                  {product.genre == 'mittens' &&
+                    <Card.Img variant="top" src={mitten} />
+                  }
                   <Card.Header className="" as="h5">{ product.name }</Card.Header>
                   <Card.Subtitle className="mb-2 text-muted">${ product.price }</Card.Subtitle>
                   <Card.Text className="">{ product.desc }</Card.Text>
@@ -35,6 +58,9 @@ class ProductItem extends Component {
 }
 
 export default ProductItem;
+// <Card.Img variant="top" src="https://via.placeholder.com/100x60.png" />
+
+
 
 // className="col-md-4 inLine"
 // <Card style={{ width: '18rem' }}>

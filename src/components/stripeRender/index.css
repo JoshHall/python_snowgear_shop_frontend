@@ -9,12 +9,3 @@ table thead tr th, table tfoot tr th, table tbody tr td {
 .checkout-btn {
   border: none !important;
 }
-
-.checkout-btn Button {
-  border-color: #5e7784 !important;
-  background-color: #5e7784 !important;
-}
-
-.checkout-btn Button:focus {
-  box-shadow: 0 0 0 0.13rem rgba(94,119,132,.7)
-}

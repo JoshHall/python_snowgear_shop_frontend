@@ -6,6 +6,8 @@ import Home from './views/home';
 import Shop from './views/shop';
 // import products from './products.js';
 import Cart from './views/cart';
+// import {Elements, StripeProvider} from 'react-stripe-elements';
+// import CheckoutForm from './views/checkoutForm';
 
 class App extends Component {
   constructor() {
@@ -42,7 +44,7 @@ class App extends Component {
       var cart = JSON.parse(sessionStorage.getItem('cart'));
     }
     else {
-      var cart = [];
+      cart = [];
     }
 
     for (let i in this.state.products) {
@@ -78,6 +80,25 @@ class App extends Component {
     console.log(cart)
 
     sessionStorage.setItem('cart', JSON.stringify(cart));
+
+    this.calcTotal();
+    this.setState({'cart': cart});
+  }
+
+  addCartItem = (id,size) => {
+    // get cart key from sessionStorage and parse it into object
+    let cart = JSON.parse(sessionStorage.getItem('cart'));
+
+    for (let i in cart) {
+      if(cart[i].product.product_id === id && cart[i].size === size) {
+        if (cart[i].quantity >= 1) {
+          cart[i].quantity += 1;
+          break;
+        }
+      }
+    }
+
+    sessionStorage.setItem('cart',JSON.stringify(cart));
 
     this.calcTotal();
     this.setState({'cart': cart});
@@ -161,10 +182,10 @@ class App extends Component {
       <div className="App">
         <Header total={this.state.total}/>
 
-         <Switch>
+        <Switch>
           <Route exact path='/' render={() => <Home products={this.state.products}/>} />
           <Route exact path='/shop' render={() => <Shop products={this.state.products} addItem={this.addItem}/>} />
-          <Route exact path='/cart' render={() => <Cart cart={this.state.cart} total={this.state.total} removeItem={this.removeItem}/>} />
+          <Route exact path='/cart' render={() => <Cart cart={this.state.cart} total={this.state.total} removeItem={this.removeItem} addCartItem={this.addCartItem}/>} />
         </Switch>
       </div>
     );

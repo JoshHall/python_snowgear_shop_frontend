@@ -8,8 +8,9 @@ import Nav from 'react-bootstrap/Nav'
 class Header extends Component {
   render() {
     return (
-      <Navbar className='nav fixed-top' fixed='top' expand="lg">
+      <Navbar className='nav fixed-top' fixed='top' variant="dark" expand="lg">
         <Navbar.Brand className="navbar-brand logo-container"><img src={logo} alt="Company Logo" /></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link className="navbar-brand" href="/">Home</Nav.Link>

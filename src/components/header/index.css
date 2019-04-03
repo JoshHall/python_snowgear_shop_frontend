@@ -68,5 +68,17 @@ Nav.mr-auto {
   position: relative;
 }
 .collapse {
-  padding-left: 9vw;
+  padding-left: 11vw;
+}
+
+button.navbar-toggler {
+  margin-left: 90% !important;
+  color: white !important;
+}
+
+#basic-navbar-nav.navbar-collapse.collapse.show {
+  padding-left: 7%;
+  border-radius: 10px;
+  margin-left: 73% !important;
+  background-color: #21283B !important;
 }

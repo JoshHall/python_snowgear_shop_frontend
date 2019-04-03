@@ -1,0 +1,17 @@
+button.btn {
+  border-color: #4e6471;
+  background-color: #4e6471;
+}
+button.btn:hover {
+  border-color: #5e7784;
+  background-color: #5e7784;
+}
+
+button.btn:active {
+  border-color: #5e7784 !important;
+  background-color: #5e7784 !important;
+}
+
+button.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(78,100,113,.7)
+}

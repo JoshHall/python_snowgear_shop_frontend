@@ -18,7 +18,7 @@ class ProductItem extends Component {
         <div className="col-md-12">
           {this.props.products &&
             this.props.products.map( product =>
-              <Card className="col-md-4 inLine" id={product.product_id} >
+              <Card className="col-md-4 inLine hov" id={product.product_id} >
                 <Card.Body>
                   {product.genre == 'boots' &&
                     <Card.Img variant="top" src={boot} />

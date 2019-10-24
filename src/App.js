@@ -172,7 +172,7 @@ class App extends Component {
 
     let products = await response.json();
 
-    // if the variable you are saving into the state is the same, yu cane just use the code below instead of events: events
+    // if the variable you are saving into the state is the same, you can just use the code below instead of events: events
     this.setState({ products });
   }
 

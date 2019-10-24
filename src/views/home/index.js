@@ -11,7 +11,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className="container">
         <div className="banner-img-container">
             <img src={banner} alt="snow covered mountain"/>
         </div> {/* end banner image container */}

@@ -1,31 +1,40 @@
-
 /* .card-container {
   width: 14.5vw;
 } */
 
+.shop-container {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+  margin-top: 15vh;
+  width: 100vw !important;
+}
+
 .card {
-  padding: 0 2vw 1vh 2vw !important;
+  min-width: 350px !important;
+  max-width: 380px !important;
   border: none !important;
   height: 300px !important;
   display: inline-block !important;
-  margin-top: 10vh !important;
+  margin: 5vmin 1vmin !important;
 }
 
 .hov:hover {
   transition-timing-function: linear;
-  transition: 0.3s;
+  transition: 0.4s;
   transform: translateY(-3%);
 }
 
 .card-body {
-  width: 75% !important;
+  min-width: 350px !important;
+  max-width: 380px !important;
   padding: 0 !important;
   border: 1px solid lightgray !important;
   border-radius: 5px !important;
   text-align: center !important;
-  -webkit-box-shadow: 1px 1px 7px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 1px 1px 7px -1px rgba(0,0,0,0.75);
-  box-shadow: 1px 1px 7px -1px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 1px 1px 7px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 7px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 7px -1px rgba(0, 0, 0, 0.75);
 }
 
 .card-body .card-subtitle {
@@ -45,8 +54,7 @@
 } */
 
 .card-img-top {
-  height: 300px;
-
+  height: 100%;
 }
 
 .card-subtitle {
@@ -72,5 +80,5 @@
 }
 
 .card button:focus {
-  box-shadow: 0 0 0 0.2rem rgba(78,100,113,.7)
+  box-shadow: 0 0 0 0.2rem rgba(78, 100, 113, 0.7);
 }

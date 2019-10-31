@@ -54,7 +54,7 @@
 } */
 
 .card-img-top {
-  height: 100%;
+  max-height: 350px;
 }
 
 .card-subtitle {

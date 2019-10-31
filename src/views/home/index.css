@@ -5,10 +5,12 @@
 }
 
 .container {
+  display: grid;
   margin: 0;
   padding-left: 0 !important;
   padding-right: 0 !important;
   min-width: 100vw;
+  grid-template-areas: "homeBanner" "homeSponserBanner" "homeCarousel";
 }
 
 .row {
@@ -16,18 +18,28 @@
 }
 
 .banner-img-container {
+  grid-area: homeBanner;
   margin-top: 8vh;
   position: relative;
   overflow: hidden;
 }
 
+.banner-img-container > img {
+  width: 100%;
+}
+
 .sponsers-container {
+  grid-area: homeSponserBanner;
   height: 15vh;
 }
 
 .sponsers-container img {
   height: 100%;
   width: 100%;
+}
+
+.homeCarousel {
+  grid-area: homeCarousel;
 }
 
 .top-margin-lg {
@@ -44,7 +56,8 @@
   padding: 1vh 0 1vh 40vw;
 }
 
-.featured-text, .featured-shop-all {
+.featured-text,
+.featured-shop-all {
   text-align: center;
   display: inline-block;
   color: #4e6471;
@@ -58,21 +71,17 @@
 }
 
 .carousel-control-prev-icon {
-
 }
 
 .featured-control-prev {
   width: 7vw;
 }
 
-
 .carousel-control-next-icon {
-
 }
 .featured-control-next {
   width: 7vw;
 }
-
 
 .contact-carousel-container {
   margin-top: 3vh;
@@ -80,18 +89,24 @@
 
 /* farthest right hidden item must be absolute position for animations */
 .carousel-inner .carousel-item-prev.carousel-item-right {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    display: block;
-    visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  visibility: visible;
 }
 
 .carousel-item {
   max-height: 552px !important;
 }
 
-.carousel-item-2 {
-  margin-top: -6% !important;
+.carousel-item > img {
+  min-height: 500px;
+  max-height: 500px !important;
+  width: auto;
 }
+
+/* .carousel-item-2 {
+  margin-top: -6% !important;
+} */

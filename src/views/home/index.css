@@ -104,7 +104,8 @@
 .carousel-item > img {
   min-height: 500px;
   max-height: 500px !important;
-  width: auto;
+  max-width: auto;
+  object-fit: cover;
 }
 
 /* .carousel-item-2 {
